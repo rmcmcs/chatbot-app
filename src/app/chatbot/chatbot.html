@@ -1,0 +1,27 @@
+<div class="chat-container">
+
+  <div *ngFor="let msg of messages" [ngClass]="msg.type" class="message">
+    {{msg.text}}
+  </div>
+
+  <div class="options">
+    <button (click)="handleOption('eligibility')">Eligibility</button>
+    <button (click)="handleOption('fees')">Fees</button>
+    <button (click)="handleOption('apply')">Apply</button>
+    <button (click)="handleOption('documents')">Documents</button>
+    <button (click)="handleOption('contact')">Contact</button>
+  </div>
+
+  <div class="input-box">
+    <input [(ngModel)]="userInput" placeholder="Type message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+
+  <div *ngIf="showForm" class="form-box">
+    <input [(ngModel)]="form.name" placeholder="Your Name" />
+    <input [(ngModel)]="form.email" placeholder="Email" />
+    <input [(ngModel)]="form.phone" placeholder="Phone" />
+    <button (click)="submitForm()">Submit</button>
+  </div>
+
+</div>
