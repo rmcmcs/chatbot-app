@@ -1,1 +1,33 @@
-<app-chatbot></app-chatbot>
+<div class="chat-container">
+
+  <div class="chat-header">
+    🤖 Smart ChatBot
+  </div>
+
+  <div class="chat-body" #chatBody>
+
+    <div *ngFor="let msg of messages" class="message-wrapper">
+      <div [ngClass]="msg.type === 'user' ? 'user-msg' : 'bot-msg'">
+        <span [innerHTML]="msg.text"></span>
+      </div>
+    </div>
+
+    <!-- Typing animation -->
+    <div *ngIf="isTyping" class="typing">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+  <div class="chat-input">
+    <input 
+      type="text"
+      [(ngModel)]="userInput"
+      (keyup.enter)="sendMessage()"
+      placeholder="Type your message..."
+    />
+  </div>
+
+</div>

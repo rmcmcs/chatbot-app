@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Container */
+.chat-container {
+  width: 360px;
+  height: 550px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: #f7f7f7;
+}
+
+/* Header */
+.chat-header {
+  background: linear-gradient(135deg, #4a90e2, #6a11cb);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Chat Body */
+.chat-body {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+/* Messages */
+.message-wrapper {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.user-msg {
+  background: #4a90e2;
+  color: white;
+  padding: 10px;
+  border-radius: 18px 18px 0 18px;
+  margin: 6px;
+  max-width: 70%;
+  margin-left: auto;
+}
+
+.bot-msg {
+  background: #e4e6eb;
+  padding: 10px;
+  border-radius: 18px 18px 18px 0;
+  margin: 6px;
+  max-width: 70%;
+}
+
+/* Input */
+.chat-input {
+  padding: 10px;
+  background: white;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74,144,226,0.5);
+}
+
+/* Typing Animation */
+.typing {
+  display: flex;
+  gap: 5px;
+  margin: 10px;
+}
+
+.typing span {
+  width: 8px;
+  height: 8px;
+  background: gray;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bullet styling */
+.bot-msg ul {
+  padding-left: 18px;
+  margin: 5px 0;
+}
+
+.bot-msg li {
+  margin-bottom: 4px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .chat-container {
+    width: 95%;
+    height: 90vh;
+    margin: 10px auto;
+  }
+
+  .chat-header {
+    font-size: 16px;
+  }
+
+  .user-msg, .bot-msg {
+    font-size: 13px;
+    max-width: 85%;
+  }
+}
