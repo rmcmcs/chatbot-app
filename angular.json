@@ -12,7 +12,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/chatbot-app",
+            "outputPath": "docs",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [],
@@ -24,7 +24,15 @@
             "styles": [
               "src/styles.css"
             ]
-          }
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false
+            }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
@@ -36,6 +44,6 @@
     }
   },
   "cli": {
-    "analytics": "690d2ea6-abee-464d-bed7-dd2f520ab9b1"
+    "analytics": false
   }
 }
