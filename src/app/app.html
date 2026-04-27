@@ -25,8 +25,10 @@
     <input 
       type="text"
       [(ngModel)]="userInput"
-      (keyup.enter)="sendMessage()"
+      (keydown.enter)="sendMessage(); $event.preventDefault()"
       placeholder="Type your message..."
+      autocomplete="off"
+      autofocus
     />
   </div>
 
