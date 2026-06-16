@@ -107,7 +107,7 @@ export class App {
         });
 
       else if (msg.includes('fees') || msg.includes('fee') || msg.includes('cost'))
-        this.messages.push({ text: "💰 Fees: ₹50,000/year.", type: 'bot' });
+        this.messages.push({ text: "💰 Fees: ₹55,000/year.", type: 'bot' });
 
       else if (msg.includes('documents') || msg.includes('required'))
         this.messages.push({ text: "📄 Documents: Aadhaar, Marksheet, Photo.", type: 'bot' });
