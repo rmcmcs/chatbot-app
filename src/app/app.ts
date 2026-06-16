@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf, NgClass } from '@angular/common';
 
@@ -16,9 +16,9 @@ export class App {
   isTyping = false;
   step = 0;
 
-  constructor() {
-    this.startChat();
-  }
+  constructor(private cdr: ChangeDetectorRef) {
+  this.startChat();
+}
 
   startChat() {
     this.messages.push({ text: "🎓 Welcome to M.Sc Computer Science Admission Process!", type: 'bot' });
@@ -28,20 +28,31 @@ export class App {
   }
 
   sendMessage() {
-    if (!this.userInput.trim()) return;
 
-    const msg = this.userInput.toLowerCase();
+  if (!this.userInput.trim()) return;
 
-    this.messages.push({ text: this.userInput, type: 'user' });
-    this.userInput = '';
+  const msg = this.userInput.toLowerCase().trim();
 
-    this.isTyping = true;
+  this.messages.push({
+    text: this.userInput,
+    type: 'user'
+  });
 
-    setTimeout(() => {
-      this.isTyping = false;
-      this.handleFlow(msg);
-    }, 100);
-  }
+  this.userInput = '';
+
+  this.isTyping = true;
+
+  setTimeout(() => {
+
+    this.isTyping = false;
+
+    this.handleFlow(msg);
+
+    this.cdr.detectChanges();
+
+  }, 300);
+
+}
 
   handleFlow(msg: string) {
 
